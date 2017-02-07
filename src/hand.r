@@ -2,6 +2,9 @@
 setwd("C:/Users/yongli/Desktop/Dropbox/research/flood_prediction/TWM_HaysTravisWilco_addresses_csv/")
 require(ggmap)
 data<-read.csv(file="TWM_HaysTravisWilco_addresses-sorted.csv",header=TRUE,sep=",")
+intervals<-200  #### grid size intervalsxintervals
+
+
 sub<-data.frame(data$POINT_X[data$County=="Williamson"],data$POINT_Y[data$County=="Williamson"],data$HAND_ft[data$County=="Williamson"])
 subset<-cbind(sub[,1],sub[,2],sub[,3])
 names(subset)<-c("long","lat","hand")
@@ -10,7 +13,6 @@ xmax<-max(subset[,1])
 ymin<-min(subset[,2])
 ymax<-max(subset[,2])
 hand_max<-0
-intervals<-200
 pointx<-subset[,1]
 pointy<-subset[,2]
 x <- grid1( intervals, range = c(xmin,xmax))
